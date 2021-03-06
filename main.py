@@ -16,16 +16,16 @@ printMIDIDeviceList()
 INPUT = midi.Input(1)
 
 NOTES = [36, 37, 46, 47]        # Note numbers in MIDI notes
-KEYS = [KEYBOARD.A, KEYBOARD.W, KEYBOARD.S, KEYBOARD.D]
+KEYS = [KEYBOARD.A, KEYBOARD.S, KEYBOARD.W, KEYBOARD.D]
 noteToKey = dict(zip(NOTES, KEYS))
 
-PRESS =   [133, 144, 159]
+PRESS =   [153, 144, 159]
 RELEASE = [137, 128, 143]
 
 while True:
     if INPUT.poll():
         data = INPUT.read(1)
-        #print(data)
+        print(data)
         note, stat = data[0][0][1], data[0][0][0]
         if note in noteToKey:
             key = noteToKey[note]
@@ -37,5 +37,3 @@ while True:
                 # pyautogui.keyDown(key)
                 # win32api.keybd_event(VK_CODE[key], 0,0,0)
                 keyboard.PressKey(key)
-            else:
-                print(f"!! weird status !!\n{stat} - {note}")
