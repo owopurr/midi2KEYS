@@ -16,7 +16,7 @@ printMIDIDeviceList()
 INPUT = midi.Input(1)
 
 NOTES = [36, 37, 46, 47]        # Note numbers in MIDI notes
-KEYS = [KEYBOARD.A, KEYBOARD.W, KEYBOARD.S, KEYBOARD.D] # HEX codes from http://www.flint.jp/misc/?q=dik&lang=en
+KEYS = [KEYBOARD.A, KEYBOARD.W, KEYBOARD.S, KEYBOARD.D]
 noteToKey = dict(zip(NOTES, KEYS))
 
 while True:
