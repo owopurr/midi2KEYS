@@ -21,3 +21,8 @@ will do:
 2 -> B
 3 -> C
 ```
+
+---
+new update, use KEYBOARD.KEY  
+i.e. `[KEYBOARD.A, KEYBOARD.W, KEYBOARD.S, KEYBOARD.D]`  
+see `main.py` for example and `keybinds.py` for all keys
