@@ -19,17 +19,23 @@ NOTES = [36, 37, 46, 47]        # Note numbers in MIDI notes
 KEYS = [KEYBOARD.A, KEYBOARD.W, KEYBOARD.S, KEYBOARD.D]
 noteToKey = dict(zip(NOTES, KEYS))
 
+PRESS =   [133, 144, 159]
+RELEASE = [137, 128, 143]
+
 while True:
     if INPUT.poll():
         data = INPUT.read(1)
-        note, stat = data[0][0][1], 0 if data[0][0][2] == 0 else 1
+        #print(data)
+        note, stat = data[0][0][1], data[0][0][0]
         if note in noteToKey:
             key = noteToKey[note]
-            if stat == 0:
+            if stat in RELEASE:
                 # pyautogui.keyUp(key)
                 # win32api.keybd_event(VK_CODE[key], 0,win32con.KEYEVENTF_KEYUP,0)
                 keyboard.ReleaseKey(key)
-            else:
+            elif stat in PRESS:
                 # pyautogui.keyDown(key)
                 # win32api.keybd_event(VK_CODE[key], 0,0,0)
                 keyboard.PressKey(key)
+            else:
+                print(f"!! weird status !!\n{stat} - {note}")
